@@ -32,6 +32,11 @@ inline double random_double(double min, double max) {
     return min + (max-min)*random_double();
 }
 
+inline int random_int(int min, int max) {
+    // Returns random integers [min, max]
+    return int(random_double(min, max+1));
+}
+
 inline std::string get_filename() {
     std::string file = __FILE__;
     // Get filename, no path

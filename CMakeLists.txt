@@ -30,4 +30,5 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(-Wunused-variable)          # Variable is defined but unused
 endif()
 
-#add_executable(RayTracer src/main.cpp)
+#add_executable(CoverImageBlur src/cover_image_blur.cpp)
+add_executable(BVH src/bvh.cpp)

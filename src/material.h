@@ -2,6 +2,7 @@
 #define MATERIAL_H
 
 #include "hittable.h"
+#include "aabb.h"
 
 class material {
     public:
@@ -21,7 +22,7 @@ class lambertian : public material {
 
             if (scatter_direction.near_zero()) scatter_direction = rec.normal;
 
-            scattered = ray(rec.p, scatter_direction);
+            scattered = ray(rec.p, scatter_direction, r_in.time());
             attenuation = albedo;
             return true;
         }
@@ -38,7 +39,7 @@ class metal : public material {
         bool scatter(const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered) const override {
             Vec3 reflected = reflect(r_in.direction(), rec.normal);
             reflected = UV(reflected) + (fuzz * random_UV());
-            scattered = ray(rec.p, reflected);
+            scattered = ray(rec.p, reflected, r_in.time());
             attenuation = albedo;
             return (dot(scattered.direction(), rec.normal) > 0);
         }
@@ -65,7 +66,7 @@ class dielectric : public material {
             if (cannot_refract || reflectance(cos_theta, ri) > random_double()) direction = reflect(unit_direction, rec.normal);
             else direction = refract(unit_direction, rec.normal, ri);
             
-            scattered = ray(rec.p, direction);
+            scattered = ray(rec.p, direction, r_in.time());
             return true;
         }
 

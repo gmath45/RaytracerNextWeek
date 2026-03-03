@@ -40,8 +40,8 @@ class camera {
                     write_color_to_buffer(buffer.data(), index, pixel_samples_scale * pixel_color); // PNG pixel data
                 }
             }
-
-            stbi_write_png(get_filename().c_str(), image_width, image_height, 3, buffer.data(), image_width * 3);    // PNG creation
+            std::string output_path = "img/" + source_file + ".png";
+            stbi_write_png(output_path.c_str(), image_width, image_height, 3, buffer.data(), image_width * 3);    // PNG creation
             std::clog << "\rDone.                 \n";
         }
 
@@ -103,8 +103,9 @@ class camera {
             
             auto ray_origin = (defocus_angle <= 0) ? center : defocus_disk_sample();
             auto ray_direction = pixel_sample - ray_origin;
+            auto ray_time = random_double();
 
-            return ray(ray_origin, ray_direction);
+            return ray(ray_origin, ray_direction, ray_time);
         }
 
         Vec3 sample_square() const {
