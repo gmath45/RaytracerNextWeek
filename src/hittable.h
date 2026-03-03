@@ -1,7 +1,6 @@
 #ifndef HITTABLE_H
 #define HITTABLE_H
 
-#include "aabb.h"
 
 class material;
 
@@ -11,6 +10,8 @@ class hit_record {
         Vec3 normal;
         shared_ptr<material> mat;
         double t;
+        double u;
+        double v;
         bool front_face;
         
         // Determine if surface is front-facing

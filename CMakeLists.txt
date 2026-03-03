@@ -31,4 +31,9 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 #add_executable(CoverImageBlur src/cover_image_blur.cpp)
-add_executable(BVH src/bvh.cpp)
+#add_executable(BVH src/bvh.cpp)
+#add_executable(CheckeredFloor src/checkered_floor.cpp)
+#add_executable(CheckeredSpheres src/checkered_spheres.cpp)
+add_executable(Earth src/earth.cpp)
+
+set_target_properties(Earth PROPERTIES VS_DEBUGGER_ENVIRONMENT "RTW_IMAGES=${CMAKE_SOURCE_DIR}/src/images")
