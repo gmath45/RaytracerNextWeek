@@ -1,0 +1,23 @@
+# Build directories
+build/
+Release/
+Debug/
+MinSizeRel/
+RelWithDebInfo/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.vcxproj
+*.vcxproj.filters
+*.sln
+*.slnx
+
+# Visual Studio files
+.vs/
+*.user
+
+# OS Files
+.DS_Store
+Thumbs.db
